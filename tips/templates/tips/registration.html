@@ -1,9 +1,27 @@
-<h3>Register</h3>
+{% load static %}
 
-<form enctype="multipart/form-data" method="Post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ profile_form.as_p }}
-    <p><input type="submit" value="Create User", name="Create User"></p>
-</form>
+<header id="main-header">
+  <nav><a href="/about" id="main-logo-beautiful">Only</a>
+        <a href="/about"  id="main-logo"> tips</a></nav>
+      <h1>{% block main_heading %}{% endblock %}</h1>
+  {% block header_content %}{% endblock %}
+</header>
 
+<h2>Register new waiter</h2>
+
+
+<link href="{% static 'tips/styles/register.css' %}" rel="stylesheet">
+
+    <form class="signup-form" enctype="multipart/form-data" method="Post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ profile_form.as_p }}
+        <p><input type="submit" value="Create User" name="Create User"></p>
+    </form>
+
+
+
+
+
+
+<!--</div>-->

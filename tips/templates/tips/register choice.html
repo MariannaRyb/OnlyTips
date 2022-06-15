@@ -1,10 +1,34 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+
+
+<header id="main-header">
+
+  <nav><a href="/about" id="main-logo-beautiful">Only</a>
+        <a href="/about"  id="main-logo"> tips</a></nav>
+
+      <h1>{% block main_heading %}{% endblock %}</h1>
+  {% block header_content %}{% endblock %}
+</header>
+
+
+<h2>Registration</h2>
+
+<link href="{% static 'tips/styles/register choice.css' %}" rel="stylesheet">
+
 <body>
-$END$
+    {% if form.errors %}
+    <li class="errorlist">Incorrect username or password. Please try again</li>
+    {% endif %}
+
+    {% if next %}
+        <li class="errorlist">Something went wrong</li>
+    {% endif %}
+
+    <p><a href="{% url "register-user"%}" class="btn">I am a waiter</a></p>
+    <p><a href="{% url "register_customer"%}" class="btn">I am a customer</a></p>
+
 </body>
 </html>

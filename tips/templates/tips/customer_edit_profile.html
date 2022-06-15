@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load static %}
+
+<header id="main-header">
+  <nav><a href="/about" id="main-logo-beautiful">Only</a>
+        <a href="/about"  id="main-logo"> tips</a></nav>
+      <h1>{% block main_heading %}{% endblock %}</h1>
+  {% block header_content %}{% endblock %}
+</header>
+
+<h2>Edit Profile</h2>
+
+<h3>Please fill in only those fields that you want to change</h3>
+
+<link href="{% static 'tips/styles/register.css' %}" rel="stylesheet">
+<form class="signup-form" method='POST' enctype="multipart/form-data">
+    {%csrf_token%}
+        {{ u_form }}
+        {{ p_form }}
+    <p><input type="submit" value="Update" name="Update"></p>
+</form>
+<!--</div>-->

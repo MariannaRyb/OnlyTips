@@ -1,29 +1,45 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
+
+<header id="main-header">
+
+  <nav><a href="/about" id="main-logo-beautiful">Only</a>
+        <a href="/about"  id="main-logo"> tips</a></nav>
+
+      <h1>{% block main_heading %}{% endblock %}</h1>
+  {% block header_content %}{% endblock %}
+</header>
+
+
+<h2>Log in</h2>
+
+<link href="{% static 'tips/styles/register.css' %}" rel="stylesheet">
+
 <body>
     {% if form.errors %}
-    <p>There is something wrong with what you entered</p>
+    <li class="errorlist">Incorrect username or password. Please try again</li>
     {% endif %}
 
     {% if next %}
-        <p>Hey, you can't access that page</p>
+        <li class="errorlist">Something went wrong</li>
     {% endif %}
-
-    <form method="post" action="{% url "login" %}" class="site-form">
+<div>
+    <form method="post" action="{% url "login" %}" class="signup-form">
         {% csrf_token %}
         <p>Username: {{ form.username }}</p>
         <p>Password: {{ form.password }}</p>
 
-        <p><input type="submit" value="Login"></p>
+        <p><a href="{% url "reset_password"%}" class="btn">Forgot password?</a></p>
+
+        <p><input type="submit" value="Log in"></p>
         <input type="hidden" name="next" value="{{ next }}">
     </form>
 
-    <li><a href='/registration' class='menu_btn'>Create an account!</a></li>
-
+</div>
+    <p><a href="{% url "register_choices"%}" class="btn">Create an account!</a></p>
 
 </body>
 </html>

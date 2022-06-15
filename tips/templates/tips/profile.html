@@ -1,10 +1,141 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'tips/styles/profile.css' %}" rel="stylesheet">
+        <title>{% block title %}Cafes{% endblock %}</title>
+        {% block site_css %}{% endblock %}
+    </head>
+    <body>
+
+    {% if user.is_authenticated %}
+        <a href="/cafes" class="button">
+    {% else %}
+        <a href="/login" class="button">
+    {% endif %}
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        tip!
+    </a>
+
+    <div class="container">
+        <div class="menu">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "logout" %}"  class='menu_btn'>log out</a></li>
+                {% else %}
+                    <li><a href='{% url "login" %}' class='menu_btn'>log in</a></li>
+                {% endif %}
+                {% if user.is_authenticated and user.waiterprofile.wallet %}
+                    <li><a href='{% url "edit_profile" %}' class='menu_btn'>edit</a></li>
+                {% elif user.is_authenticated and user.customerprofile.wallet %}
+                    <li><a href='{% url "edit_customer" %}' class='menu_btn'>edit</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+            {% block body %}
+                {% if user.waiterprofile %}
+                <img class="center" src="{{ user.waiterprofile.image.url }}" alt="{{ waiter_wallet }}">
+                {% elif user.customerprofile %}
+                <img class="center" src="{{ user.customerprofile.image.url }}" alt="{{ customer_wallet }}">
+                {% else %}
+                <img class="center" src="{% static 'tips/images/pic user.png' %}">
+                {% endif %}
+
+                {% block main_heading %}
+                    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                {% endblock %}
+
+                {% if user.waiterprofile %}
+                <section id="details">
+                    <div class="description">{{ user.waiterprofile.description }}</div>
+                </section>
+                {% endif %}
+
+                <form action="" class="tipping-form">
+                    <label for="wallet">Your Crypto-Wallet: </label>
+                    {% if user.customerprofile.wallet %}
+                        <input type="text" id="wallet" name="wallet" value={{ user.customerprofile.wallet }} readonly><br>
+                    {% elif user.waiterprofile.wallet %}
+                        <input type="text" id="wallet" name="wallet" value={{ user.waiterprofile.wallet }} readonly><br>
+                    {% endif %}
+
+                    <label for="balance">Your Crypto-Balance: </label>
+                    <input type="text" id="balance" name="balance"
+                           value={{ balance_wallet }} readonly><br>
+                </form>
+
+                <button onclick="myFunction()" id="myBtn">History</button>
+
+            {% endblock %}
+
+    <span id="more">
+
+    {% if transactions_len %}
+        <table>
+            <h4>History of sending crypto-tips</h4>
+                <hr>
+                    <tr>
+                        <th>Time</th>
+                        <th>Receiver</th>
+                        <th>Comment</th>
+                    </tr>
+                    {% for transact_item in transactions %}
+                    <tr>
+                        <td scope="row" style="width:300px">{{ transact_item.time }}</td>
+                        <td scope="row" style="width:500px">{{ transact_item.receiver }}</td>
+                        <td scope="row">{{ transact_item.comment }}</td>
+                    </tr>
+                    {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if transactions_recieved_len %}
+        <table>
+            <h4>History of receiving crypto-tips</h4>
+                <hr>
+                    <tr>
+                        <th>Time</th>
+                        <th>Sender</th>
+                        <th>Comment</th>
+                    </tr>
+                    {% for transact_item in transactions_recieved %}
+                    <tr>
+                        <td scope="row" style="width:300px">{{ transact_item.time }}</td>
+                        <td scope="row" style="width:500px">{{ transact_item.sender }}</td>
+                        <td scope="row">{{ transact_item.comment }}</td>
+                    </tr>
+                    {% endfor %}
+        </table>
+    {% endif %}
+
+    </span>
+
+    </body>
 </html>
+
+
+<script>
+function myFunction() {
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (moreText.style.display === "none") {
+    btnText.innerHTML = "History";
+    moreText.style.display = "none";
+  } else {
+    btnText.innerHTML = "History";
+    moreText.style.display = "inline";
+  }
+
+
+}
+</script>

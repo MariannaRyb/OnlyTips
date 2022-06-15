@@ -14,6 +14,7 @@ accounts = {}
 for i in range(len(accounts_list)):
     accounts[str(i)] = accounts_list[i]
 
+
 # 0x43dFBd8e1ac409B085C0a1A53aa2fd0CbC06e661
 abi = '''
 [
@@ -305,7 +306,7 @@ abi = '''
 	}
 ]
 '''
-contractAddress = '0xFE64bb713a4B29c5Ec50efeF3A8733DbbE2D14F9'
+contractAddress = '0x6732113855c3e23dBEf8a59b71B49c871F17a805'
 
 
 token = w3.eth.contract(address = contractAddress, abi=abi)
@@ -316,12 +317,13 @@ transferAmount = 1000 * 1e18
 
 
 def transac(sender_address, receiver_address, amount):
-
     return token.functions.transfer(receiver_address,
 									int(amount)).transact({'from': sender_address})
 
 
-
+def balance(address):
+    tokens = token.functions.balanceOf(address).call()
+    return tokens
 
 
 #transac(accounts['0'], accounts['1'], transferAmount)

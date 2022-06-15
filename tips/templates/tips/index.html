@@ -9,17 +9,23 @@
 
 
 {% block header_content %}
-    <p>Leaving a tip can be Crypto-Cool! {{ user.waiterprofile.image }}</p>
+    <p>Leaving a tip can be Crypto-Cool!</p>
 {% endblock %}
 
 
 {% block body %}
+
     <section>
-                <h2>List of the available cafes</h2>
+                <h2>Choose your cafe!</h2>
                 <ol>
                     {% for cafes_item in tips %}
-
+                          <div class="column">
+                            <div class="card">
+                                <div class="container">
                         {% include 'tips/includes/list_of_cafes.html' with title=cafes_item.title image=cafes_item.image.url  location=cafes_item.location slug=cafes_item.slug%}
+                                </div>
+                            </div>
+                          </div>
                     {% endfor %}
                 </ol>
             </section>

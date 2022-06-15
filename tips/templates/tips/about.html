@@ -1,10 +1,113 @@
+
+{% load static %}
+
+<link href="{% static 'tips/styles/about-intro.css' %}" rel="stylesheet">
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html>
+<header id="main-header">
+            <nav><a href="/about" id="main-logo-beautiful">Only</a>
+            <a href="/about"  id="main-logo"> tips</a></nav>
+            <h1>{% block main_heading %}{% endblock %}</h1>
+            {% block header_content %}{% endblock %}
+        </header>
+
+
+
+
 <body>
-$END$
+
+
+<div class="about-section">
+
+  <p>You have no cash or don't want to spend it, but you have a crypto wallet?</p>
+  <p>Do you want to ensure that your tip has reached the recipient?</p>
+  <p>Do you care about the security of the transfer?</p>
+  <p>Leaving a tip can be Crypto-Cool!</p>
+
+</div>
+
+{% if user.is_authenticated %}
+        <a href="/cafes" class="button_2">
+    {% else %}
+        <a href="/login" class="button_2">
+    {% endif %}
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        tip!
+    </a>
+
+<div class="container">
+        <div class="menu">
+            <ul>
+                {% if not user.is_authenticated %}
+                    <li><a href='{% url "login" %}' class='menu_btn'>log in</a></li>
+                {% endif %}
+                    <li> <a href='{% url "about" %}' class='menu_btn'>about</a></li>
+                    <li><a href='{% url "join" %}' class='menu_btn'>join us</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href='{% url "profile" %}' class='menu_btn'>profile</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+
+      <div class="container">
+        <h2>Marianna Rybnikova</h2>
+        <p class="title">Frontend Developer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>rybnikovamarianna@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+
+      <div class="container">
+        <h2>Dmitry Kurbatov</h2>
+        <p class="title">Backend Developer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>troitskyyyadverts@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+
+      <div class="container">
+        <h2>Gleb Zotov</h2>
+        <p class="title">Token & Smart Contract Developer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>gazotov@edu.hse.ru</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 style="text-align:center">Why we came up with such idea?</h3>
+
+<div class="why-section">
+    <p> We are often asked a question: “Why had we chosen cryptocurrency? And how does it work?”</p>
+
+    <p>Everything is quite simple. All operations carried out on cryptocurrency are many times safer than banking operations thanks to blockchain and smart contracts. But what are these terrible words? Let's take a closer look.</p>
+
+    <p> Blockchain is a decentralized system in which all transactions take place and in which the entire information about these transactions is stored. Decentralization implies that there is no single institution, for example, a bank through which payments are made and which, probably, can freeze an operation. The security of the blockchain is caused by encoding all information about transactions into a special string called hash. Its essence is that any set of characters can be encoded into a unique hash that cannot be decoded. And because of this, all the information stored in the blockchain is inaccessible to perception in its usual form, which means that everything is a secret. And since the hash is unique, it is impossible to change the information about an already completed transaction after the fact without changing the hash, and therefore leave this change unnoticed.</p>
+    <p>The smart contract in its turn sets the token parameters and binds the token to the blockchain.</p>
+	<p> Thus, we have written our smart contract, created our token and with the help of blockchain technology we help you to tip people for their work.
+
+</p>
+</div>
+
 </body>
 </html>

@@ -12,10 +12,16 @@
 
 {% block body %}
     <section>
-                <h2>List of the available waiters</h2>
+                <h2>Choose your waiter!</h2>
                 <ol>
                     {% for waiter_item in tips %}
+                        <div class="column">
+                            <div class="card">
+                                <div class="container">
                         {% include 'tips/includes/list_of_waiters.html' with user=waiter_item.user image=waiter_item.image.url%}
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </ol>
             </section>

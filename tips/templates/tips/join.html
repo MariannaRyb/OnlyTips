@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load static %}
+
+<header id="main-header">
+  <nav><a href="/about" id="main-logo-beautiful">Only</a>
+        <a href="/about"  id="main-logo"> tips</a></nav>
+      <h1>{% block main_heading %}{% endblock %}</h1>
+  {% block header_content %}{% endblock %}
+</header>
+
+<link href="{% static 'tips/styles/register.css' %}" rel="stylesheet">
+
+<h2>Want to become a part of our crypto-tips?</h2>
+<h2>Please fill in the form and our manager will contact you soon!</h2>
+
+<form class="signup-form" method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+
+    <p>Your Name: {{ form.name }}</p>
+    <p>Your Email: {{ form.email }}</p>
+    <p>Cafe: {{ form.cafe }}</p>
+    <p>Address: {{ form.address }}</p>
+    <p>Any additional comments: {{ form.message }}</p>
+    <p>Image: {{ form.image }}</p>
+    <input type="submit" value="Join">
+</form>

@@ -1,34 +1,50 @@
-{% extends 'tips/base/base.html' %}
+
 {% load static %}
 
-<!--{% block site_css %}
-    <link rel="stylesheet" href="{% static 'tips/styles/waiter-detail.css' %}">
-{% endblock %}-->
-
-{% block main_heading %}
-    {{ waiter_cafe }}
-{% endblock %}
+<link href="{% static 'tips/styles/tipping-form.css' %}" rel="stylesheet">
 
 {% block body %}
     {% if waiter_found %}
 
-        <p class="thumb">
-            <img id="main-image" src="{{ waiter_image.url }}" alt="{{ waiter_wallet }}">
-        </p>
 
-            <section id="name">
-                <h2>{{ waiter_name }}</h2>
-            </section>
+        <a href="/cafes" class="button">
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        tip!
+        </a>
+
+       <div class="container">
+        <div class="menu">
+            <ul>
+                {% if not user.is_authenticated %}
+                    <li><a href='{% url "login" %}' class='menu_btn'>log in</a></li>
+                {% endif %}
+                    <li> <a href='{% url "about" %}' class='menu_btn'>about</a></li>
+                    <li><a href='' class='menu_btn'>join us</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href='{% url "profile" %}' class='menu_btn'>profile</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+            <img class="center" src="{{ waiter_image.url }}" alt="{{ waiter_wallet }}">
+
+            {% block main_heading %}
+                 <h1>{{ waiter_first_name }} {{ waiter_last_name }}</h1>
+            {% endblock %}
 
             <section id="details">
-                <h2>Main Goals</h2>
-                <p>{{ waiter_description }}</p>
+                <div class="description">{{ waiter_description }}</div>
             </section>
 
-            <section id="wallet">
-                <h2>Crypto-Wallet</h2>
-                <h2>{{ waiter_wallet }}</h2>
-            </section>
+        <form action="{% url 'about-waiter' waiter_wallet %}" class="tipping-form" method="POST">
+        {% csrf_token %}
+                {{ form }}
+                <input class='btn' type="submit" value="Send">
+        </form>
+
 
     {% else %}
     <p>No waiter found, sorry!</p>

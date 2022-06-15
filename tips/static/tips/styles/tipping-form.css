@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+body{
+    margin-top: 100px;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(23deg, rgba(0,0,0,1) 0%,
+                      rgba(4,37,38,1) 30%,
+                      rgba(110,11,61,1) 100%);
+    background-attachment: fixed;
+}
+
+form {
+  /* Just to center the form on the page */
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Comfortaa', cursive;
+  background-color: rgb(32, 0, 33);
+  background-attachment: fixed;
+  /* To see the limits of the form */
+  padding: 1em;
+  display: grid;
+  border-radius: 1em;
+}
+
+.tipping-form input[type="text"], textarea {
+  background-color : rgba(61, 6, 34, 0.45);
+  font-family: 'Comfortaa', cursive;
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  border-color: rgb(35, 3, 19);
+  text-align: center;
+  top: 50%;
+  padding-top: 50px;
+}
+
+.tipping-form input[type="number"], textarea {
+  background-color : rgba(61, 6, 34, 0.45);
+  font-family: 'Comfortaa', cursive;
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  border-color: rgb(35, 3, 19);
+  text-align: center;
+
+}
+
+.tipping-form input[type="submit"]{
+    font-size: 23px;
+    font-family: 'Comfortaa', cursive;
+    padding: 10px;
+    list-style-type: none;
+    color: #e80765;
+  background: transparent;
+    margin: 10px 10px;
+  border-color: #e80765;
+    border-radius: 4px;
+    transition:0.5s;
+}
+
+.tipping-form input[type="submit"]:hover{
+    color: #058d7c;
+    border-color: #058d7c;
+
+}
+
+div {
+      display: flex;
+      justify-content: center;
+    }
+
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+img{
+    margin-right: 15px;
+    margin-bottom: 15px;
+    height: 160px;
+    width: 160px;
+    border-radius: 100%;
+}
+
+h1{
+  font-family: 'Comfortaa', cursive;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+div{
+  font-family: 'Comfortaa', cursive;
+  color: #ffffff;
+  line-height: 1.6;}
+
+.description {
+    padding: 20px; /* Поля */
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+    background: transparent; /* Цвет фона */
+    border: none; /* Параметры рамки */
+   }
+
+#main-logo {
+    font-size: 30px;
+    font-family: 'Comfortaa', cursive;
+    text-decoration: none;
+    color: #ffffff;
+    letter-spacing:2px;
+
+}
+
+#main-logo-beautiful {
+    font-size: 39px;
+    font-family: 'Great Vibes', cursive;
+    text-decoration: none;
+    color: #e80765;
+    letter-spacing:0.01px;
+}
+
+.menu ul{
+    top: 100px;
+    right: 80px;
+    position: absolute;
+    word-spacing: 1px;
+    font-family: 'Comfortaa', cursive;
+    outline: none;
+    text-decoration: none;
+    --width:170px;
+    --height:70px;
+    width: var(--width);
+    height: var(--height);
+    line-height:var(--height);
+    padding: 0;
+    border: none;
+    text-align: center;
+    list-style-type: none;
+    font-size:24px;
+    letter-spacing:2px;
+    transition:2s;
+    background-color:transparent;
+    border-color:transparent;
+}
+
+.menu ul:hover{
+  outline:none;
+  color: #058d7c;
+  stroke: #058d7c;
+  stroke-dashoffset:calc(1.5 * var(--height));
+}
+
+a {
+    font-family: 'Comfortaa', cursive;
+    outline: none;
+    text-decoration: none;
+    transition:0.5s;
+}
+
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
+}
+
+a:hover{
+    color: #058d7c;
+}
+
+.button{
+  --width:170px;
+  --height:70px;
+  top: 50px;
+  right: 80px;
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+  line-height:var(--height);
+  color: #e80765;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  font-size:24px;
+  letter-spacing:2px;
+  text-decoration:none;
+  transition:2s;
+  background-color:transparent;
+  border-color:transparent;
+}
+.button:hover,
+.button:focus{
+  outline:none;
+  color: #058d7c
+}
+.button-svg,
+.button-rect{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill:none;
+}
+.button-rect{
+  stroke: #e80765;
+  stroke-width:5;
+  stroke-dasharray:var(--height) var(--width);
+  stroke-dashoffset:calc(
+      2 * var(--width) + 2.5* var(--height)
+    );
+  transition:2s;
+}
+.button:hover .button-rect,
+.button:focus .button-rect{
+  stroke: #058d7c;
+  stroke-dashoffset:calc(1.5 * var(--height));
+}
+
+p {
+  font-family: 'Comfortaa', cursive;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
