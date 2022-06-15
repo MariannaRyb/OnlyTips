@@ -1,0 +1,11 @@
+<li class="waiter-item">
+    <article>
+        <p class="waiter-summary">
+            <p class="thumb">
+                 <img src="{{ image }}" alt="{{ user }}">
+            </p>
+            <div class="waiter-details">
+                 <p> <a href="{% url "about-waiter" waiter_item.wallet %}", class="btn">{{waiter_item.user.first_name}} {{waiter_item.user.last_name }}</a></p>
+            </div>
+    </article>
+</li>

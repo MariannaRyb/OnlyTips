@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'tips/styles/basis.css' %}" rel="stylesheet">
+        <title>{% block title %}Cafes{% endblock %}</title>
+        {% block site_css %}{% endblock %}
+    </head>
+    <body>
+
+    <a href="/login" class="button">
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        log in
+    </a>
+
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href='' class='menu_btn'>cafes</a></li>
+                <li> <a href='' class='menu_btn'>about</a></li>
+                 <li><a href='' class='menu_btn'>join us</a></li>
+            </ul>
+        </div>
+    </div>
+        <header id="main-header">
+            <nav><a href="/cafes" id="main-logo-beautiful">Only</a>
+                <a href="/cafes"  id="main-logo"> tips</a></nav>
+            <h1>{% block main_heading %}{% endblock %}</h1>
+            {% block header_content %}{% endblock %}
+        </header>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+    <div class="authors>">
+        @ Rybnikova Marianna, Kurbatov Dmitry, Zotov Gleb, 2021-2022
+    </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'tips/base/base.html' %}
+{% load static %}
+
+{% block title %}Waiters List{% endblock %}
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'tips/styles/basis.css' %}">
+{% endblock %}
+
+
+
+{% block header_content %}
+    <p>Leaving a tip can be Crypto-Cool! {{ user.waiterprofile.image }}</p>
+{% endblock %}
+
+
+{% block body %}
+    <section>
+                <h2>List of the available cafes</h2>
+                <ol>
+                    {% for cafes_item in tips %}
+
+                        {% include 'tips/includes/list_of_cafes.html' with title=cafes_item.title image=cafes_item.image.url  location=cafes_item.location slug=cafes_item.slug%}
+                    {% endfor %}
+                </ol>
+            </section>
+{% endblock %}

@@ -1,0 +1,9 @@
+<h3>Register</h3>
+
+<form enctype="multipart/form-data" method="Post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ profile_form.as_p }}
+    <p><input type="submit" value="Create User", name="Create User"></p>
+</form>
+

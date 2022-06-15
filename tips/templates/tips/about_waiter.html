@@ -1,0 +1,37 @@
+{% extends 'tips/base/base.html' %}
+{% load static %}
+
+<!--{% block site_css %}
+    <link rel="stylesheet" href="{% static 'tips/styles/waiter-detail.css' %}">
+{% endblock %}-->
+
+{% block main_heading %}
+    {{ waiter_cafe }}
+{% endblock %}
+
+{% block body %}
+    {% if waiter_found %}
+
+        <p class="thumb">
+            <img id="main-image" src="{{ waiter_image.url }}" alt="{{ waiter_wallet }}">
+        </p>
+
+            <section id="name">
+                <h2>{{ waiter_name }}</h2>
+            </section>
+
+            <section id="details">
+                <h2>Main Goals</h2>
+                <p>{{ waiter_description }}</p>
+            </section>
+
+            <section id="wallet">
+                <h2>Crypto-Wallet</h2>
+                <h2>{{ waiter_wallet }}</h2>
+            </section>
+
+    {% else %}
+    <p>No waiter found, sorry!</p>
+    {% endif %}
+
+{% endblock %}

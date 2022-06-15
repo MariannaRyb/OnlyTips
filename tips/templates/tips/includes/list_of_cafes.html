@@ -1,0 +1,15 @@
+<li class="waiter-item">
+    <article>
+        <div class="waiter-summary">
+            <p class="thumb">
+            <!--<div class="waiter-image">
+                <img src="{{ image }}" alt="{{ title }}">
+            </div>-->
+            <img src="{{ image }}" alt="{{ title }}">
+            </p>
+             <div class="waiter-details">
+                 <p><a href="{% url "all-waiters" cafes_item.slug %}" class="btn">{{ cafes_item.title }}</a></p>
+             </div>
+        </div>
+    </article>
+</li>
