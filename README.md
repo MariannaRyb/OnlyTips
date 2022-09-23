@@ -23,3 +23,5 @@ are going to be discussed later.
 To sum up, we have created a working blockchain based tips service that is aimed at a
 concept of a waiter-visitor relation. In other words, for now we have a service for restaurants and
 cafes where visitors may tip waiters for their well done job
+
+Link to a detailed report: https://drive.google.com/file/d/1_7jsHJl_z9E0SjoSmjgY2hZCPVuvhcw0/view?usp=sharing
