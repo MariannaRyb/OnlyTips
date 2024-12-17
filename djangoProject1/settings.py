@@ -20,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tn#*%14d_k6q+_4pq-z@=jv(@k9_sy!%wdal$x*ib=)r601=!9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -132,11 +130,3 @@ MEDIA_URL = '/files/'
 
 LOGIN_REDIRECT_URL = '/cafes'
 
-#SMTP Configuration
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'OnlyTips@yandex.ru'
-EMAIL_HOST_PASSWORD = 'interestchairgirlfriendexperienceqPM20'
